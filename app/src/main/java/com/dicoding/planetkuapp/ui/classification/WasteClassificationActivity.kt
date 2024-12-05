@@ -2,16 +2,21 @@ package com.dicoding.planetkuapp.ui.classification
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.dicoding.planetkuapp.CameraActivity
 import com.dicoding.planetkuapp.databinding.ActivityWasteClassificationBinding
 import com.dicoding.planetkuapp.ui.priceprediction.PricePredictionActivity
-
+import java.nio.ByteBuffer
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 class WasteClassificationActivity : AppCompatActivity() {
 
@@ -19,47 +24,52 @@ class WasteClassificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityWasteClassificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val cameraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val photo: Bitmap = result.data?.extras?.get("data") as Bitmap
-                binding.ivPreview.setImageBitmap(photo)
-            } else {
-                Toast.makeText(this, "Gagal mengambil gambar dari kamera", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            if (uri != null) {
-                binding.ivPreview.setImageURI(uri)
-            } else {
-                Toast.makeText(this, "Gagal memilih gambar dari galeri", Toast.LENGTH_SHORT).show()
-            }
-        }
-
         binding.btnCapture.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            val intent = Intent(this, CameraActivity::class.java)
             cameraLauncher.launch(intent)
         }
+
+        val galleryLauncher =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+                if (uri != null) {
+                    binding.ivResult.setImageURI(uri)
+                    binding.ivResult.visibility = View.VISIBLE
+                } else {
+                    Toast.makeText(this, "Gagal memilih gambar dari galeri", Toast.LENGTH_SHORT).show()
+                }
+            }
 
         binding.btnGallery.setOnClickListener {
             galleryLauncher.launch("image/*")
         }
 
         binding.btnPredict.setOnClickListener {
-            val classifiedWaste = "Plastik" // Contoh hasil klasifikasi
+            val classifiedWaste = "Plastik" // Contoh hasil klasifikasi sementara
             navigateToPricePrediction(classifiedWaste)
         }
-
     }
+
+    private val cameraLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val photoPath = result.data?.getStringExtra("PHOTO_PATH")
+                if (!photoPath.isNullOrEmpty()) {
+                    val bitmap = BitmapFactory.decodeFile(photoPath)
+                    binding.ivResult.setImageBitmap(bitmap)
+                    binding.ivResult.visibility = View.VISIBLE
+                }
+            } else {
+                Toast.makeText(this, "Gagal mengambil gambar", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     private fun navigateToPricePrediction(classifiedWaste: String) {
         val intent = Intent(this, PricePredictionActivity::class.java)
         intent.putExtra("CLASSIFIED_WASTE", classifiedWaste)
         startActivity(intent)
     }
-
 }
+

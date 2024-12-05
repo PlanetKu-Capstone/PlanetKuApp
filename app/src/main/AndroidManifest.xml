@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetKuApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".CameraActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -37,11 +39,12 @@
 
         <activity
             android:name=".ui.classification.WasteClassificationActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.article.DetailArticleActivity"
             android:exported="false" />
-        <activity android:name=".ui.profile.ProfileActivity"
+        <activity
+            android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.welcome.WelcomeActivity"
@@ -52,15 +55,17 @@
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
-        <activity android:name=".ui.carbonemission.CarbonEmissionActivity"
+        <activity
+            android:name=".ui.carbonemission.CarbonEmissionActivity"
             android:label="Emisi Karbon"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
-        <activity android:name=".ui.about.AboutActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
