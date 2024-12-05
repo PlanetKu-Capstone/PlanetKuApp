@@ -1,5 +1,6 @@
 package com.dicoding.planetkuapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import com.dicoding.planetkuapp.ui.article.ArticleFragment
 import com.dicoding.planetkuapp.ui.maps.MapsFragment
 import com.dicoding.planetkuapp.ui.more.MoreFragment
 import com.dicoding.planetkuapp.ui.home.HomeFragment
+import com.dicoding.planetkuapp.ui.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +17,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+        val isFirstLaunch = sharedPreferences.getBoolean("IS_FIRST_LAUNCH", true)
+
+        if (isFirstLaunch) {
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

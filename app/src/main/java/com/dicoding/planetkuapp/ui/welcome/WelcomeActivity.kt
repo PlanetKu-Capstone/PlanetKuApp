@@ -18,6 +18,8 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+            sharedPreferences.edit().putBoolean("IS_FIRST_LAUNCH", false).apply()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

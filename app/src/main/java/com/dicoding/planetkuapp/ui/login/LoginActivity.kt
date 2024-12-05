@@ -50,6 +50,10 @@ class LoginActivity : AppCompatActivity() {
     private fun performLogin(email: String, password: String) {
         if (email == "user@example.com" && password == "password") {
             Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         } else {
             Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
         }
