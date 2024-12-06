@@ -79,4 +79,7 @@
     <string name="lihat_prediksi_harga">Lihat Prediksi Harga</string>
     <string name="ambil_gambar">Ambil Gambar</string>
     <string name="selamat_datang">Selamat datang di aplikasi Planetku! Silahkan login terlebih dahulu</string>
+    <string name="profile_icon">profil\n</string>
+    <string name="about_app_icon">tentang aplikasi\n</string>
+    <string name="logout_icon">logout\n</string>
 </resources>

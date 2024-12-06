@@ -19,15 +19,15 @@ class MoreFragment : Fragment(R.layout.fragment_more) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMoreBinding.bind(view)
 
-        binding.btnProfile.setOnClickListener {
+        binding.tabProfile.setOnClickListener {
             startActivity(Intent(requireContext(), ProfileActivity::class.java))
         }
 
-        binding.btnAboutApp.setOnClickListener {
+        binding.tabAboutApp.setOnClickListener {
             startActivity(Intent(requireContext(), AboutActivity::class.java))
         }
 
-        binding.btnLogout.setOnClickListener {
+        binding.tabLogout.setOnClickListener {
             startActivity(Intent(requireContext(), LoginActivity::class.java))
             activity?.finish()
         }
