@@ -18,9 +18,10 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString().trim()
+            val email = binding.etUsername.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
 
             if (validateInput(email, password)) {
@@ -31,10 +32,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun validateInput(email: String, password: String): Boolean {
         if (email.isEmpty()) {
-            binding.emailInputLayout.error = getString(R.string.error_email_required)
+            binding.usernameInputLayout.error = getString(R.string.error_email_required)
             return false
         } else {
-            binding.emailInputLayout.error = null
+            binding.usernameInputLayout.error = null
         }
 
         if (password.isEmpty()) {
@@ -48,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun performLogin(email: String, password: String) {
-        if (email == "user@example.com" && password == "password") {
+        if (email == "user" && password == "password") {
             Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, MainActivity::class.java)

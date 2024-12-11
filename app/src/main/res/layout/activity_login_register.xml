@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <TextView
+        android:id="@+id/wcmTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_login"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_grey"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imgLoginRegister"/>
+
+    <ImageView
+        android:id="@+id/imgLoginRegister"
+        android:layout_width="210dp"
+        android:layout_height="423dp"
+        android:contentDescription="@string/planetku_team"
+        android:src="@drawable/onboarding"
+        app:layout_constraintBottom_toBottomOf="@id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/wcmTitle"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="337dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/light_green"
+        android:text="@string/title_activity_login"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgLoginRegister" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="337dp"
+        android:layout_height="59dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/purple_700"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRegister">
+        <TextView
+            android:id="@+id/cr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/powered"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/crp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="start"
+            android:layout_marginLeft="5dp"
+            android:text="@string/planetku_team"
+            android:textColor="@color/light_green"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

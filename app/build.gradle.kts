@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.dicoding.planetkuapp"
     compileSdk = 35
 
