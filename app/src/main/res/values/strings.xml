@@ -82,4 +82,6 @@
     <string name="profile_icon">profil\n</string>
     <string name="about_app_icon">tentang aplikasi\n</string>
     <string name="logout_icon">logout\n</string>
+    <string name="back" />
+    <string name="camera">camera</string>
 </resources>

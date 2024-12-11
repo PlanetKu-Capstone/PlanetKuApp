@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,25 +18,28 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var previewView: PreviewView
     private var imageCapture: ImageCapture? = null
+    private lateinit var btnCapture: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
 
         previewView = findViewById(R.id.previewView)
-        val btnCapture: MaterialButton = findViewById(R.id.btnCapture)
+        btnCapture = findViewById(R.id.btnCapture)
 
         startCamera()
 
         btnCapture.setOnClickListener {
             takePhoto()
         }
+
     }
 
     private fun startCamera() {
@@ -97,3 +101,4 @@ class CameraActivity : AppCompatActivity() {
         )
     }
 }
+
