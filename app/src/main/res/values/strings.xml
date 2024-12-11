@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PlanetKuApp</string>
+    <string name="get_started">Get Started</string>
     <string name="title_home">Home</string>
     <string name="title_article">Article</string>
     <string name="title_more">Menu Lainnya</string>
@@ -9,11 +10,12 @@
     <string name="klasifikasi_sampah">Klasifikasi Sampah</string>
     <string name="desc_klasifikasi_sampah">Mulai langkah kecil untuk bumi yang lebih bersih! Identifikasi sampah Anda dan kelola dengan bijak.</string>
     <string name="emisi_karbon">Emisi Karbon</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Login</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Yuuukkk Login!</string>
     <string name="welcome">Welcome !</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -67,8 +69,9 @@
     profil dan pengaturan aplikasi. Dengan PlanetKu, Anda dapat berkontribusi langsung dalam menciptakan bumi yang lebih sehat dan berkelanjutan.</string>
     <string name="error_email_required">Email tidak boleh kosong!!!</string>
     <string name="error_password_required">Password tidak boleh kosong!!!</string>
-    <string name="welcome_message">Halo, selamat datang di aplikasi Planetku!</string>
-    <string name="app_description">Planetku adalah aplikasi untuk membantu Anda mengelola sampah dengan mudah, ramah lingkungan, dan mendukung keberlanjutan.</string>
+    <string name="welcome_selamat">Hallo,</string>
+    <string name="welcome_message">Selamat datang di Planetku!</string>
+    <string name="app_description">Mari kita menjaga planet kita tetap sehat</string>
     <string name="prompt_name">Nama</string>
     <string name="name_required">Nama tidak boleh kosong</string>
     <string name="email_required">Email tidak boleh kosong</string>
@@ -82,6 +85,11 @@
     <string name="profile_icon">profil\n</string>
     <string name="about_app_icon">tentang aplikasi\n</string>
     <string name="logout_icon">logout\n</string>
-    <string name="back" />
-    <string name="camera">camera</string>
+
+<!--    Baru-->
+    <string name="powered">Powered By </string>
+    <string name="planetku_team">Planetku Team</string>
+    <string name="welcome_login">Buat profil untuk login ke PlanetKu dan jaga planet kita.</string>
+    <string name="title_login_btn">Login</string>
+    <string name="register_title">Registrasikan Akun Kamu!</string>
 </resources>

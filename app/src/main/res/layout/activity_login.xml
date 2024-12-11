@@ -7,45 +7,36 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="#E8F5E9">
-
-    <ImageView
-        android:id="@+id/app_logo_register"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/planetku" />
-
+    android:background="@color/white">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/action_sign_in_short"
-        android:textColor="@color/light_green"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
+        android:textColor="@color/dark_grey"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/app_logo_register"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/login" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/selamat_datang"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:layout_marginBottom="24dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputLayout"
+        android:id="@+id/usernameInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:hint="@string/prompt_email">
+        android:hint="@string/prompt_username"
+        android:background="@color/form_green"
+        app:boxBackgroundMode="filled">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +57,8 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/action_sign_in_short"
+        android:text="@string/title_login_btn"
         android:layout_marginTop="16dp"
+        android:textColor="@color/white"
         android:backgroundTint="@color/light_green"/>
 </LinearLayout>

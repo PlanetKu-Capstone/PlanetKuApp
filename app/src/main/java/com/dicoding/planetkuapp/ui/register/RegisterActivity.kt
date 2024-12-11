@@ -19,10 +19,10 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         binding.btnRegister.setOnClickListener {
             val name = binding.etName.text.toString().trim()
-            val email = binding.etEmail.text.toString().trim()
+            val email = binding.etUsername.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
 
             when {
@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
                     binding.etName.error = getString(R.string.name_required)
                 }
                 email.isEmpty() -> {
-                    binding.etEmail.error = getString(R.string.email_required)
+                    binding.etUsername.error = getString(R.string.email_required)
                 }
                 password.isEmpty() -> {
                     binding.etPassword.error = getString(R.string.password_required)
