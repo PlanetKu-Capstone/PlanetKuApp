@@ -4,37 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="40dp"
     android:gravity="center"
-    android:background="#E8F5E9">
+    android:background="#FFFFFF">
 
     <ImageView
         android:id="@+id/app_logo_welcome"
         android:layout_width="250dp"
         android:layout_height="150dp"
-        android:src="@drawable/planetku"
+        android:layout_marginBottom="80dp"
         android:contentDescription="@string/app_name"
-        android:layout_marginBottom="16dp" />
+        android:src="@drawable/welcome_logo" />
 
-    <TextView
-        android:id="@+id/tvWelcomeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_message"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/light_green"
-        android:layout_marginBottom="16dp" />
 
-    <TextView
-        android:id="@+id/tvAppDescription"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_description"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:textColor="@color/black" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvWelcomeSelamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_selamat"
+            android:textColor="@color/light_green"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="start" />  <!-- Menambahkan gravity start untuk teks rata kiri -->
+
+        <TextView
+            android:id="@+id/tvWelcomeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/welcome_message"
+            android:textColor="@color/light_green"
+            android:textSize="24sp"
+            android:textStyle="normal"
+            android:gravity="start" />
+        <TextView
+            android:id="@+id/tvAppDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_description"
+            android:textSize="14sp"
+            android:gravity="start"
+            android:textColor="@color/dark_grey" />
+    </LinearLayout>
+
+
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
@@ -42,28 +59,59 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="80dp">
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnStarted"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/action_sign_in_short"
+            android:text="@string/get_started"
             android:backgroundTint="@color/light_green"
             android:textColor="@color/white"
             android:layout_marginEnd="8dp" />
 
-        <Button
-            android:id="@+id/btnRegister"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/register"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/light_green"
-            android:layout_marginStart="8dp" />
+<!--        <Button-->
+<!--            android:id="@+id/btnRegister"-->
+<!--            style="?android:attr/buttonBarButtonStyle"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/register"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:backgroundTint="@color/light_green"-->
+<!--            android:layout_marginStart="8dp" />-->
     </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/cr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/powered"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/crp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="start"
+            android:layout_marginLeft="5dp"
+            android:text="@string/planetku_team"
+            android:textColor="@color/light_green"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>
