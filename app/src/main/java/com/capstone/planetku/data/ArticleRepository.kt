@@ -20,20 +20,18 @@ class ArticleRepository {
         }
     }
 
-
-
-    suspend fun getArticleBySlug(slug: String): Result<DataItem> {
+    suspend fun getArticleBySlugFromAll(slug: String): Result<DataItem> {
         return try {
-            val response = articleService.getArticleBySlug(slug)
-            if (response.isSuccessful && response.body()?.data?.isNotEmpty() == true) {
-                val article = response.body()?.data?.first()
-                if (article != null) {
-                    Result.success(article)
-                } else {
-                    Result.failure(Exception("Article not found"))
-                }
+            // Panggil API getAllArticles
+            val articlesResult = getArticles()
+            val articles = articlesResult.getOrNull()
+
+            // Lakukan filter pada artikel yang ditemukan
+            val article = articles?.find { it.slug == slug }
+            if (article != null) {
+                Result.success(article)
             } else {
-                Result.failure(Exception("Failed to fetch article"))
+                Result.failure(Exception("Article with slug '$slug' not found"))
             }
         } catch (e: Exception) {
             Result.failure(e)

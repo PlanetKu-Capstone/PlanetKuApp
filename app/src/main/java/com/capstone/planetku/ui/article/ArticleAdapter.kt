@@ -1,7 +1,10 @@
 package com.capstone.planetku.ui.article
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +23,7 @@ class ArticleAdapter(
         return ArticleViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
@@ -37,10 +41,12 @@ class ArticleAdapter(
             }
         }
 
+        @RequiresApi(Build.VERSION_CODES.N)
         fun bind(article: DataItem) {
             binding.apply {
-                tvTitle.text = article.title
-                tvExcerpt.text = article.excerpt
+
+                tvTitle.text = Html.fromHtml(article.title ?: "", Html.FROM_HTML_MODE_COMPACT)
+                tvExcerpt.text = Html.fromHtml(article.excerpt ?: "", Html.FROM_HTML_MODE_COMPACT)
 
                 Glide.with(itemView.context)
                     .load("https://planetku.reviens.id/storage/public/${article.image}")
@@ -49,6 +55,7 @@ class ArticleAdapter(
             }
         }
     }
+
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataItem>() {

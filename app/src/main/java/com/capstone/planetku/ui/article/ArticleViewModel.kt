@@ -56,7 +56,7 @@ class ArticleViewModel : ViewModel() {
             _isLoading.value = true
             _error.value = null
 
-            val result = repository.getArticleBySlug(slug)
+            val result = repository.getArticleBySlugFromAll(slug)
             _articleDetail.postValue(result)
 
             _isLoading.value = false
