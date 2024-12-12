@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center"
-    android:background="#CAF6CF">
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,6 +34,7 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#CAF6CF"
             android:hint="@string/prompt_name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -48,6 +48,7 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#CAF6CF"
             android:hint="@string/prompt_username"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +62,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#CAF6CF"
             android:hint="@string/prompt_password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>

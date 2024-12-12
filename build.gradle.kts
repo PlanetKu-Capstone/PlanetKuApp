@@ -3,8 +3,8 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin) apply false
-    alias(libs.plugins.google.gms.google.services) apply true
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.0"
+    id("com.google.gms.google-services") version "4.4.2" apply false
 }
 
 // Menambahkan bagian untuk mendefinisikan versi AGP

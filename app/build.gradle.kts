@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
     id("kotlin-android")
     id("kotlinx-serialization")
-    alias(libs.plugins.google.gms.google.services)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.cardview)
-    implementation(platform(libs.firebase.bom.v3231))
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation(libs.material.v1110)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
