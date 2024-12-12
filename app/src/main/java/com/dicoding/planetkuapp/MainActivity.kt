@@ -18,21 +18,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-        val isFirstLaunch = sharedPreferences.getBoolean("IS_FIRST_LAUNCH", true)
-
-        if (isFirstLaunch) {
-            val intent = Intent(this, WelcomeActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+        val isFirstLaunch = sharedPreferences.getBoolean("IS_FIRST_LAUNCH", true)
+
+        // Jika aplikasi pertama kali diluncurkan, arahkan ke WelcomeActivity
+//        if (isFirstLaunch) {
+//            val intent = Intent(this, WelcomeActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//            return
+//        }
+
+        // Menampilkan HomeFragment setelah login atau jika bukan pertama kali diluncurkan
         loadFragment(HomeFragment())
 
+        // Menangani bottom navigation item click
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_home -> loadFragment(HomeFragment())
@@ -50,4 +53,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
+
+
 
