@@ -6,8 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@color/white">
-
+    android:background="#CAF6CF">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,9 +25,6 @@
         android:src="@drawable/login"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/app_name" />
-
-
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

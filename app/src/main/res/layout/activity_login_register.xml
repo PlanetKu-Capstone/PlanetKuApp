@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#CAF6CF">
+
     <TextView
         android:id="@+id/wcmTitle"
         android:layout_width="0dp"
@@ -91,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:gravity="start"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:text="@string/planetku_team"
             android:textColor="@color/light_green"
             android:textSize="14sp"

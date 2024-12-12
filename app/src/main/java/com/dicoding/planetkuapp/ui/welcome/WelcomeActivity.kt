@@ -20,20 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.btnLogin.setOnClickListener {
-//            val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-//            sharedPreferences.edit().putBoolean("IS_FIRST_LAUNCH", false).apply()
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.btnRegister.setOnClickListener {
-//            val intent = Intent(this, RegisterActivity::class.java)
-//            startActivity(intent)
-//        }
-//        val btnGoToSecondActivity = findViewById<Button>(R.id.btnGoToSecondActivity)
         binding.btnStarted.setOnClickListener {
-            Log.d("WelcomeActivity", "Button clicked!")
             val intent = Intent(this, LoginRegisterActivity::class.java)
             startActivity(intent)
         }

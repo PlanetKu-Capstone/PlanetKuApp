@@ -92,4 +92,5 @@
     <string name="welcome_login">Buat profil untuk login ke PlanetKu dan jaga planet kita.</string>
     <string name="title_login_btn">Login</string>
     <string name="register_title">Registrasikan Akun Kamu!</string>
+    <string name="camera">camera\n</string>
 </resources>
