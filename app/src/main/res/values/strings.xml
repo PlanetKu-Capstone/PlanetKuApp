@@ -93,4 +93,6 @@
     <string name="title_login_btn">Login</string>
     <string name="register_title">Registrasikan Akun Kamu!</string>
     <string name="camera">camera\n</string>
+    <string name="title">Title</string>
+    <string name="snippet">Snippet</string>
 </resources>
