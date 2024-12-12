@@ -2,42 +2,63 @@ package com.capstone.planetku.ui.article
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.capstone.planetku.data.DataItem
 import com.capstone.planetku.databinding.ItemArticleBinding
 
-data class Article(
-    val title: String,
-    val content: String
-)
-
 class ArticleAdapter(
-    private val articles: List<Article>,
-    private val onItemClick: (Article) -> Unit
-) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
-
-    inner class ArticleViewHolder(private val binding: ItemArticleBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(article: Article) {
-            binding.tvArticle.text = article.title
-
-            binding.root.setOnClickListener {
-                onItemClick(article)
-            }
-        }
-    }
+    private val onItemClick: (DataItem) -> Unit
+) : ListAdapter<DataItem, ArticleAdapter.ArticleViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val binding = ItemArticleBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+            LayoutInflater.from(parent.context), parent, false
         )
         return ArticleViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        holder.bind(articles[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount() = articles.size
+    inner class ArticleViewHolder(
+        private val binding: ItemArticleBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(getItem(position))
+                }
+            }
+        }
+
+        fun bind(article: DataItem) {
+            binding.apply {
+                tvTitle.text = article.title
+                tvExcerpt.text = article.excerpt
+
+                Glide.with(itemView.context)
+                    .load("https://planetku.reviens.id/storage/public/${article.image}")
+                    .centerCrop()
+                    .into(ivArticle)
+            }
+        }
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataItem>() {
+            override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

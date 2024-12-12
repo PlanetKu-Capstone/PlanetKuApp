@@ -75,4 +75,5 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.firebase.analytics)
     implementation(libs.linkfirebase)
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
 }

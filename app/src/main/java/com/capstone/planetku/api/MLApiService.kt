@@ -8,7 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface ApiService {
+interface MLApiService {
     @POST("predict")
     suspend fun getPrediction(@Body request: PredictionRequest): Response<PredictionResponse>
 

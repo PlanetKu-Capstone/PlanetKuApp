@@ -16,7 +16,7 @@ class PricePredictionViewModel : ViewModel() {
     fun predictPrice(wasteType: String) {
         viewModelScope.launch {
             try {
-                val response = ApiClient.predictionService.getPrediction(PredictionRequest(wasteType))
+                val response = ApiClient.mlService.getPrediction(PredictionRequest(wasteType))
                 if (response.isSuccessful) {
                     response.body()?.let {
                         _predictionResult.value = Result.success(it)
