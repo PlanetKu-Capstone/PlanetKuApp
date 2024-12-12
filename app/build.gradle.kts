@@ -2,15 +2,18 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+    id("kotlin-android")
+    id("kotlinx-serialization")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
 
-    namespace = "com.dicoding.planetkuapp"
+    namespace = "com.capstone.planetku"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.dicoding.planetkuapp"
+        applicationId = "com.capstone.planetku"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
@@ -41,7 +44,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
@@ -51,7 +53,6 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.activity)
-    implementation(libs.androidx.navigation.fragment)
     implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -59,11 +60,18 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.cardview)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.androidx.navigation.fragment)
+    implementation(platform(libs.firebase.bom.v3231))
     implementation(libs.material.v1110)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
-
+    implementation(libs.image.labeling.custom)
+    implementation(libs.glide)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor.v493)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.firebase.analytics)
+    implementation(libs.linkfirebase)
 }
