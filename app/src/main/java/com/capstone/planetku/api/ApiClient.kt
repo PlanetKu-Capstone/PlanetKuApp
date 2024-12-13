@@ -26,7 +26,7 @@ object ApiClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    // Services untuk masing-masing endpoint
+
     val mainService: MainApiService = mainRetrofit.create(MainApiService::class.java)
     val articleService: ArticleApiService = articleRetrofit.create(ArticleApiService::class.java)
     val mlService: MLApiService = mlRetrofit.create(MLApiService::class.java)

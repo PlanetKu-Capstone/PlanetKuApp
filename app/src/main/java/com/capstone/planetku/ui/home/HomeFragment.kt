@@ -1,5 +1,6 @@
 package com.capstone.planetku.ui.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,6 +28,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPreferences = requireContext().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("username", "User")
+
+        binding.tvHiUser.text = "Hi, $userName!"
+
         binding.btnKlasifikasi.setOnClickListener {
             startActivity(Intent(requireContext(), WasteClassificationActivity::class.java))
         }
@@ -39,6 +45,7 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), PricePredictionActivity::class.java))
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

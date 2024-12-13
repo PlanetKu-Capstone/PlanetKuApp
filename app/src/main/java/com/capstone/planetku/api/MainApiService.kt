@@ -1,10 +1,12 @@
 package com.capstone.planetku.api
 
 import com.capstone.planetku.data.AuthResponse
+import com.capstone.planetku.data.CarbonEmissionResponse
 import com.capstone.planetku.data.LoginRequest
 import com.capstone.planetku.data.LoginResponse
 import com.capstone.planetku.data.RegisterRequest
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 

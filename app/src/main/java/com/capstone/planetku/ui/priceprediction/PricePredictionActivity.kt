@@ -10,7 +10,7 @@ import com.capstone.planetku.databinding.ActivityPricePredictionBinding
 class PricePredictionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPricePredictionBinding
-    private val wasteTypes = listOf("plastic", "paper", "metal", "glass", "organic")
+    private val wasteTypes = listOf("plastic", "paper", "metal", "glass", "battery", "clothes", "cardboard", "styrofoam", "shoes")
     private val viewModel: PricePredictionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +50,7 @@ class PricePredictionActivity : AppCompatActivity() {
 
             result.onSuccess { prediction ->
                 binding.tvPredictionResult.apply {
-                    text = "Estimasi harga untuk ${prediction.item} adalah Rp${prediction.predicted_price}/kg"
+                    text = "Estimasi harga untuk ${prediction.item} adalah Rp${prediction.predictedPrice}/kg"
                     visibility = View.VISIBLE
                 }
             }.onFailure { exception ->

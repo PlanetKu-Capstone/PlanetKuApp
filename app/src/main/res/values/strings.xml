@@ -96,4 +96,7 @@
     <string name="title">Title</string>
     <string name="snippet">Snippet</string>
     <string name="article_image">Gambar Artikel\n</string>
+    <string name="hi_user">Hi, User👋</string>
+    <string name="category_name">Category Name</string>
+    <string name="total_emission_e_g_120_kg_co2">Total Emission (e.g., 120 kg CO2)</string>
 </resources>

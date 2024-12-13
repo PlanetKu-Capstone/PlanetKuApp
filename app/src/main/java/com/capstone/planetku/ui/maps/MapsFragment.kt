@@ -80,10 +80,9 @@ class MapsFragment : Fragment() {
         mMap.uiSettings.isTiltGesturesEnabled = true
         mMap.uiSettings.isRotateGesturesEnabled = true
 
-        // Menyesuaikan InfoWindow untuk marker
         mMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
             override fun getInfoWindow(marker: Marker): View? {
-                return null // Gunakan default
+                return null
             }
 
             override fun getInfoContents(marker: Marker): View {
@@ -103,7 +102,7 @@ class MapsFragment : Fragment() {
             .position(latLng)
             .title(title)
             .snippet(snippet)
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
 
         mMap.addMarker(markerOptions)
     }
