@@ -1,8 +1,12 @@
 package com.capstone.planetku.ui.login
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.planetku.MainActivity
@@ -18,12 +22,17 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        progressBar = binding.progressBar
+
+        playLoginAnimations()
 
         binding.btnLogin.setOnClickListener {
             val email = binding.etUsername.text.toString().trim()
@@ -56,23 +65,24 @@ class LoginActivity : AppCompatActivity() {
     private fun performLogin(username: String, password: String) {
         val loginRequest = LoginRequest(username, password)
 
+        progressBar.visibility = View.VISIBLE
+
         ApiClient.mainService.loginUser(loginRequest).enqueue(object :
             Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                progressBar.visibility = View.GONE
+
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
                     loginResponse?.let {
-                        // Menyimpan data dan token ke SharedPreferences
                         saveUserDataToLocalStorage(it)
 
-                        // Tampilkan pesan sukses
                         Toast.makeText(this@LoginActivity, it.message, Toast.LENGTH_LONG).show()
 
-                        // Arahkan ke MainActivity setelah login berhasil
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
-                        finish() // Menutup LoginActivity setelah berpindah
+                        finish()
                     }
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT).show()
@@ -80,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                progressBar.visibility = View.GONE
                 Toast.makeText(this@LoginActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
@@ -97,5 +108,23 @@ class LoginActivity : AppCompatActivity() {
 
         editor.putBoolean("IS_FIRST_LAUNCH", false)
         editor.apply()
+    }
+
+    private fun playLoginAnimations() {
+        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f, 1.0f)
+        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f, 1.0f)
+        val alpha = PropertyValuesHolder.ofFloat("alpha", 0f, 1f)
+
+        val buttonAnimator = ObjectAnimator.ofPropertyValuesHolder(binding.btnLogin, scaleX, scaleY, alpha)
+        buttonAnimator.duration = 1000
+        buttonAnimator.start()
+
+        val usernameAlphaAnimator = ObjectAnimator.ofFloat(binding.usernameInputLayout, "alpha", 0f, 1f)
+        usernameAlphaAnimator.duration = 1200
+        usernameAlphaAnimator.start()
+
+        val passwordAlphaAnimator = ObjectAnimator.ofFloat(binding.passwordInputLayout, "alpha", 0f, 1f)
+        passwordAlphaAnimator.duration = 1400
+        passwordAlphaAnimator.start()
     }
 }

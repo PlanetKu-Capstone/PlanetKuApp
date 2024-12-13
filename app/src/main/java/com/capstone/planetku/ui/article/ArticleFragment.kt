@@ -1,5 +1,6 @@
 package com.capstone.planetku.ui.article
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -34,6 +35,7 @@ class ArticleFragment : Fragment() {
 
         setupRecyclerView()
         setupObservers()
+        playInitialAnimations()
 
         viewModel.fetchArticles()
         viewModel.fetchLatestArticles()
@@ -59,10 +61,16 @@ class ArticleFragment : Fragment() {
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             binding.progressBar.visibility = View.GONE
             articleAdapter.submitList(articles)
+            playRecyclerViewAnimation()
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+                playProgressBarAnimation()
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         }
 
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
@@ -84,6 +92,28 @@ class ArticleFragment : Fragment() {
                     Toast.makeText(requireContext(), "Error fetching latest articles: $error", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun playRecyclerViewAnimation() {
+        ObjectAnimator.ofFloat(binding.rvArticles, "alpha", 0f, 1f).apply {
+            duration = 1000
+            start()
+        }
+    }
+
+    private fun playProgressBarAnimation() {
+        ObjectAnimator.ofFloat(binding.progressBar, "scaleX", 1f, 1.5f, 1f).apply {
+            duration = 500
+            repeatCount = ObjectAnimator.INFINITE
+            start()
+        }
+    }
+
+    private fun playInitialAnimations() {
+        ObjectAnimator.ofFloat(binding.rvArticles, "alpha", 0f).apply {
+            duration = 0
+            start()
         }
     }
 

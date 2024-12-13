@@ -1,5 +1,7 @@
 package com.capstone.planetku.ui.home
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -33,6 +35,8 @@ class HomeFragment : Fragment() {
 
         binding.tvHiUser.text = "Hi, $userName!"
 
+        playHomeAnimations()
+
         binding.btnKlasifikasi.setOnClickListener {
             startActivity(Intent(requireContext(), WasteClassificationActivity::class.java))
         }
@@ -46,6 +50,43 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun playHomeAnimations() {
+        val textAlpha = ObjectAnimator.ofFloat(binding.tvHiUser, "alpha", 0f, 1f)
+        textAlpha.duration = 1000
+        textAlpha.start()
+
+        val klasifikasiScaleX = PropertyValuesHolder.ofFloat("scaleX", 0.8f, 1.0f)
+        val klasifikasiScaleY = PropertyValuesHolder.ofFloat("scaleY", 0.8f, 1.0f)
+        val klasifikasiAnimator = ObjectAnimator.ofPropertyValuesHolder(
+            binding.btnKlasifikasi,
+            klasifikasiScaleX,
+            klasifikasiScaleY
+        )
+        klasifikasiAnimator.duration = 800
+        klasifikasiAnimator.start()
+
+        val emisiScaleX = PropertyValuesHolder.ofFloat("scaleX", 0.8f, 1.0f)
+        val emisiScaleY = PropertyValuesHolder.ofFloat("scaleY", 0.8f, 1.0f)
+        val emisiAnimator = ObjectAnimator.ofPropertyValuesHolder(
+            binding.btnEmisi,
+            emisiScaleX,
+            emisiScaleY
+        )
+        emisiAnimator.duration = 800
+        emisiAnimator.startDelay = 200
+        emisiAnimator.start()
+
+        val prediksiScaleX = PropertyValuesHolder.ofFloat("scaleX", 0.8f, 1.0f)
+        val prediksiScaleY = PropertyValuesHolder.ofFloat("scaleY", 0.8f, 1.0f)
+        val prediksiAnimator = ObjectAnimator.ofPropertyValuesHolder(
+            binding.btnPrediksi,
+            prediksiScaleX,
+            prediksiScaleY
+        )
+        prediksiAnimator.duration = 800
+        prediksiAnimator.startDelay = 400
+        prediksiAnimator.start()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

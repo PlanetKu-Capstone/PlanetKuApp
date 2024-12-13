@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.capstone.planetku.ui.CustomPasswordEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

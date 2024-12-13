@@ -1,5 +1,7 @@
 package com.capstone.planetku.ui.welcome
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -23,29 +25,18 @@ class WelcomeActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val isFirstLaunch = sharedPreferences.getBoolean("IS_FIRST_LAUNCH", true)
-        val isLoggedOut = sharedPreferences.getBoolean("IS_LOGGED_OUT", false)
 
-        when {
-            isLoggedOut -> {
-                val editor = sharedPreferences.edit()
-                editor.putBoolean("IS_LOGGED_OUT", false)
-                editor.apply()
-            }
-            !isFirstLaunch -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            else -> {
-                val editor = sharedPreferences.edit()
-                editor.putBoolean("IS_FIRST_LAUNCH", false)
-                editor.apply()
-
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+        if (isFirstLaunch) {
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("IS_FIRST_LAUNCH", false)
+            editor.apply()
+        } else {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
+
+        playWelcomeAnimations()
 
         binding.btnStarted.setOnClickListener {
             val intent = Intent(this, LoginRegisterActivity::class.java)
@@ -53,4 +44,17 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun playWelcomeAnimations() {
+        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.2f, 1.0f)
+        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.2f, 1.0f)
+        val alpha = PropertyValuesHolder.ofFloat("alpha", 0f, 1f)
+
+        val buttonAnimator = ObjectAnimator.ofPropertyValuesHolder(binding.btnStarted, scaleX, scaleY, alpha)
+        buttonAnimator.duration = 1000
+        buttonAnimator.start()
+
+        val textAlphaAnimator = ObjectAnimator.ofFloat(binding.tvWelcomeSelamat, "alpha", 0f, 1f)
+        textAlphaAnimator.duration = 1500
+        textAlphaAnimator.start()
+    }
 }

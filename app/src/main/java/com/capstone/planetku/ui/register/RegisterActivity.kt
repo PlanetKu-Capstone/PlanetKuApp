@@ -1,5 +1,7 @@
 package com.capstone.planetku.ui.register
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -23,6 +25,9 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        playRegisterAnimations()
+
         binding.btnRegister.setOnClickListener {
             val name = binding.etName.text.toString().trim()
             val username = binding.etUsername.text.toString().trim()
@@ -67,5 +72,27 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this@RegisterActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun playRegisterAnimations() {
+        val scaleX = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.1f, 1.0f)
+        val scaleY = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.1f, 1.0f)
+        val alpha = PropertyValuesHolder.ofFloat("alpha", 0f, 1f)
+
+        val buttonAnimator = ObjectAnimator.ofPropertyValuesHolder(binding.btnRegister, scaleX, scaleY, alpha)
+        buttonAnimator.duration = 1000
+        buttonAnimator.start()
+
+        val nameAlphaAnimator = ObjectAnimator.ofFloat(binding.etName, "alpha", 0f, 1f)
+        nameAlphaAnimator.duration = 1200
+        nameAlphaAnimator.start()
+
+        val usernameAlphaAnimator = ObjectAnimator.ofFloat(binding.etUsername, "alpha", 0f, 1f)
+        usernameAlphaAnimator.duration = 1400
+        usernameAlphaAnimator.start()
+
+        val passwordAlphaAnimator = ObjectAnimator.ofFloat(binding.etPassword, "alpha", 0f, 1f)
+        passwordAlphaAnimator.duration = 1600
+        passwordAlphaAnimator.start()
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PlanetKuApp</string>
+    <string name="app_name">PlanetKu</string>
     <string name="get_started">Get Started</string>
     <string name="title_home">Home</string>
     <string name="title_article">Article</string>
