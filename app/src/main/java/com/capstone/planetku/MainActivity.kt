@@ -18,16 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-        val isFirstLaunch = sharedPreferences.getBoolean("IS_FIRST_LAUNCH", true)
-
-        if (isFirstLaunch) {
-            val intent = Intent(this, WelcomeActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
-        }
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -50,4 +40,3 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
-

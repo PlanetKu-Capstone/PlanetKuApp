@@ -24,7 +24,6 @@ class PricePredictionActivity : AppCompatActivity() {
 
         binding.btnPredictPrice.setOnClickListener {
             val selectedWasteType = binding.spWasteType.selectedItem.toString()
-            // Tampilkan loading
             binding.progressBar.visibility = View.VISIBLE
             binding.tvPredictionResult.visibility = View.GONE
 

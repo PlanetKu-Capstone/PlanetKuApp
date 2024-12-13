@@ -67,7 +67,7 @@
     Aplikasi ini mempermudah pengguna dalam memilah jenis sampah, memprediksi harga sampah, serta mengurangi jejak karbon dengan menyediakan
     informasi emisi yang relevan. PlanetKu juga dilengkapi dengan fitur personalisasi untuk pengalaman yang lebih interaktif, seperti halaman
     profil dan pengaturan aplikasi. Dengan PlanetKu, Anda dapat berkontribusi langsung dalam menciptakan bumi yang lebih sehat dan berkelanjutan.</string>
-    <string name="error_email_required">Email tidak boleh kosong!!!</string>
+    <string name="error_username_required">Username tidak boleh kosong!!!</string>
     <string name="error_password_required">Password tidak boleh kosong!!!</string>
     <string name="welcome_selamat">Hallo,</string>
     <string name="welcome_message">Selamat datang di Planetku!</string>

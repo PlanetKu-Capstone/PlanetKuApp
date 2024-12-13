@@ -22,11 +22,9 @@ class ArticleRepository {
 
     suspend fun getArticleBySlugFromAll(slug: String): Result<DataItem> {
         return try {
-            // Panggil API getAllArticles
             val articlesResult = getArticles()
             val articles = articlesResult.getOrNull()
 
-            // Lakukan filter pada artikel yang ditemukan
             val article = articles?.find { it.slug == slug }
             if (article != null) {
                 Result.success(article)

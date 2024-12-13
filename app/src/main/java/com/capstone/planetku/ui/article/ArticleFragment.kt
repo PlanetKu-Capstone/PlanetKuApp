@@ -35,13 +35,12 @@ class ArticleFragment : Fragment() {
         setupRecyclerView()
         setupObservers()
 
-        viewModel.fetchArticles() // Memanggil fungsi untuk mengambil semua artikel
-        viewModel.fetchLatestArticles() // Jika ingin mengambil artikel terbaru
+        viewModel.fetchArticles()
+        viewModel.fetchLatestArticles()
     }
 
     private fun setupRecyclerView() {
         articleAdapter = ArticleAdapter { article ->
-            // Navigate to detail dengan data dari API
             startActivity(Intent(requireContext(), DetailArticleActivity::class.java).apply {
                 putExtra(DetailArticleActivity.EXTRA_SLUG, article.slug)
             })
@@ -50,7 +49,6 @@ class ArticleFragment : Fragment() {
         binding.rvArticles.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = articleAdapter
-            // Tambahkan item decoration untuk spacing
             addItemDecoration(
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
             )
@@ -58,31 +56,26 @@ class ArticleFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        // Observasi semua artikel
         viewModel.articles.observe(viewLifecycleOwner) { articles ->
             binding.progressBar.visibility = View.GONE
-            articleAdapter.submitList(articles) // Menampilkan artikel ke RecyclerView
+            articleAdapter.submitList(articles)
         }
 
-        // Observasi loading state
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
 
-        // Observasi error state
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
             errorMessage?.let {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
             }
         }
 
-        // Observasi artikel terbaru
         viewModel.latestArticles.observe(viewLifecycleOwner) { result ->
             when {
                 result.isSuccess -> {
                     val articles = result.getOrNull()
                     articles?.let {
-                        // Tampilkan artikel terbaru (misalnya di UI atau log)
                         Log.d("LatestArticles", "Latest articles: $articles")
                     }
                 }

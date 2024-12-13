@@ -4,7 +4,6 @@ import com.capstone.planetku.data.ArticleResponse
 import retrofit2.Response
 import retrofit2.http.GET
 
-// ArticleApiService.kt
 interface ArticleApiService {
     @GET("api/getAllArticles")
     suspend fun getArticles(): Response<ArticleResponse>

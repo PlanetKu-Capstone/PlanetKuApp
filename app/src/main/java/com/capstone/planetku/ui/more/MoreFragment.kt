@@ -1,5 +1,6 @@
 package com.capstone.planetku.ui.more
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import com.capstone.planetku.databinding.FragmentMoreBinding
 import com.capstone.planetku.ui.about.AboutActivity
 import com.capstone.planetku.ui.login.LoginActivity
 import com.capstone.planetku.ui.profile.ProfileActivity
+import com.capstone.planetku.ui.welcome.WelcomeActivity
 
 class MoreFragment : Fragment(R.layout.fragment_more) {
 
@@ -28,9 +30,18 @@ class MoreFragment : Fragment(R.layout.fragment_more) {
         }
 
         binding.tabLogout.setOnClickListener {
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            val sharedPreferences = requireContext().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("IS_FIRST_LAUNCH", true)
+            editor.putBoolean("IS_LOGGED_OUT", true)
+            editor.apply()
+
+            val intent = Intent(requireContext(), WelcomeActivity::class.java)
+            startActivity(intent)
             activity?.finish()
         }
+
+
     }
 
     override fun onDestroyView() {
